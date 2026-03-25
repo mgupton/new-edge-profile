@@ -26,7 +26,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$ProfileName,
 
-    [string]$EdgePath = "$Env:ProgramFiles(x86)\Microsoft\Edge\Application\msedge.exe",
+    [string]$EdgePath = "${Env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe",
 
     [switch]$CreateShortcut
 )
@@ -118,9 +118,9 @@ try {
     $prefs.profile.name = $ProfileName
 
     # Optionally set a custom avatar icon (0–29 are standard Chromium icons)
-    if (-not $prefs.profile.avatar_icon) {
-        $prefs.profile.avatar_icon = 26  # pick any, or remove this line
-    }
+    # if (-not $prefs.profile.avatar_icon) {
+    #     $prefs.profile.avatar_icon = 26  # pick any, or remove this line
+    # }
 
     # Write back JSON with reasonable depth
     $newJson = $prefs | ConvertTo-Json -Depth 20
