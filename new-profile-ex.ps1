@@ -4,6 +4,15 @@ param(
     [string]$profileName
 )
 
+$basePath = "C:\Users\MichaelGupton\AppData\Local\Microsoft\Edge\User Data"
+
+if (Test-Path "$basePath\$profileName") {
+    Write-Host "Profile '$profileName' already exists. Please choose a different name." -ForegroundColor Red
+    exit
+}
+
+Write-Host "New profile folder: $basePath\$profileName" -ForegroundColor Green
+Read-Host "Press Enter to continue"
 
 # System-wide install (adjust path if needed)
 $edge = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
@@ -17,5 +26,5 @@ Start-Process -FilePath "$edge" `
 Read-Host "Press Enter to continue"
 ``
 
-robocopy "C:\Users\MichaelGupton\OneDrive - Avertium\Edge Browser Template\Profile 8" "C:\Users\MichaelGupton\AppData\Local\Microsoft\Edge\User Data\$profileName" /E /XF *cache* /XD *cache*
+robocopy "C:\Users\MichaelGupton\OneDrive - Avertium\Edge Browser Template\Profile 8" "$basePath\$profileName" /E /XF *cache* /XD *cache*
 
