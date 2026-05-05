@@ -20,7 +20,7 @@ $edge = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 # First launch will create the profile folder under the default user-data-dir
 # & $edge --profile-directory=$profileName
 Start-Process -FilePath "$edge" `
-              -ArgumentList "--profile-directory=$profileName" `
+              -ArgumentList "--profile-directory=""$profileName""" `
               -Wait
 
 Read-Host "Press Enter to continue"
