@@ -6,6 +6,11 @@ param(
 
 $basePath = "C:\Users\MichaelGupton\AppData\Local\Microsoft\Edge\User Data"
 
+Get-Childitem $basePath\Profile*
+
+Write-Host "Profile path: $basePath"
+
+
 if (Test-Path "$basePath\$profileName") {
     Write-Host "Profile '$profileName' already exists. Please choose a different name." -ForegroundColor Red
     exit
