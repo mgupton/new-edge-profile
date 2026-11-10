@@ -17,7 +17,7 @@ if (Test-Path "$basePath\$profileName") {
 }
 
 Write-Host "New profile folder: $basePath\$profileName" -ForegroundColor Green
-Read-Host "Press Enter to continue"
+Read-Host "Press Enter to continue to create the profile"
 
 # System-wide install (adjust path if needed)
 $edge = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
@@ -28,7 +28,7 @@ Start-Process -FilePath "$edge" `
               -ArgumentList "--profile-directory=""$profileName""" `
               -Wait
 
-Read-Host "Press Enter to continue"
+Read-Host "Press Enter to continue to copy the template profile"
 ``
 
 robocopy "C:\Users\MichaelGupton\OneDrive - Avertium\Edge Browser Template\Profile 8" "$basePath\$profileName" /E /XF *cache* /XD *cache*
